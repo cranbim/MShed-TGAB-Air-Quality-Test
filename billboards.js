@@ -27,24 +27,34 @@ function BBImage(xo,yo,w3,h3,w,h,phrases,palettes, billboardChangeIntervalMinute
   var currentPhraseChoices=new Array(3).fill(0);
   var bbs=[];
   var buf3=createGraphics(w3,h3,WEBGL);
+  var changeTime;
+
   this.buf3img=createImage(floor(w3),floor(h3));
+  // bbs[0]=new BillBoard(w,h,phrases[0][0],palettes[5]);
+  // bbs[1]=new BillBoard(w,h,phrases[1][0],palettes[5]);
+  // bbs[2]=new BillBoard(w,h,phrases[2][0],palettes[5]);
+  // buf3.push();
+  // // buf3.background(128);
+  // buf3.translate(-w3/2,-h3/2,0);
+  // showBB(bbs[0].img,0.15,0.3,-10,-PI*0.05,250,150);
+  // showBB(bbs[1].img,0.85,0.6,-10,PI*0.05,250,150);
+  // showBB(bbs[2].img,0.5,0.4,-10,0,250,150);
+  // displayFirstBillboards();
   bbs[0]=new BillBoard(w,h,phrases[0][0],palettes[5]);
   bbs[1]=new BillBoard(w,h,phrases[1][0],palettes[5]);
   bbs[2]=new BillBoard(w,h,phrases[2][0],palettes[5]);
   buf3.push();
   // buf3.background(128);
   buf3.translate(-w3/2,-h3/2,0);
-  // showBB(bbs[0].img,0.15,0.3,-10,-PI*0.05,250,150);
-  // showBB(bbs[1].img,0.85,0.6,-10,PI*0.05,250,150);
-  // showBB(bbs[2].img,0.5,0.4,-10,0,250,150);
   showBB(bbs[0].img,0.25,0.425,0,-PI*0.0125,0.4,0.225);
   showBB(bbs[1].img,0.775,0.29,0,PI*0.02,0.33,0.18);
   showBB(bbs[2].img,0.69,0.73,0,PI*0.02,0.3,0.18);
   buf3.pop();
   this.buf3img=buf3.get();
-  var changeTime=setInterval(changeBillboard,billboardChangeIntervalMinutes*60*1000);
+  changeTime=setInterval(changeBillboard,billboardChangeIntervalMinutes*60*1000);
+
   var billboardToChange=0;
-  // render();
+
 
   this.change=function(){
     console.log("change billboard messages");

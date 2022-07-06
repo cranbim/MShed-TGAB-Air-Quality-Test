@@ -97,6 +97,23 @@ function setup() {
   // aqData=new AQData(numWires,sparrowsPerWire);
 }
 
+//To be removed
+function keyPressed(){
+  if(key=="o" || key=="O"){
+    orientLandscape=!orientLandscape;
+    calcSize();
+    resizeCanvas(cw,ch);
+    visualisation=new RenderVis(ox,oy,pw,ph,
+                                locationImages,locationLabels,
+                                billboardPhrases,billboardChangeIntervalMinutes,
+                                numWires, numLocations,
+                                birdFrames,flyFrames,dirtFrames, wireLabels, locationLabels,
+                                bgImgBillboards,bgImgBirds,
+                                palettes
+                              );
+  }
+}
+
 function draw() {
   background(0);
   push();
@@ -200,6 +217,15 @@ function RenderVis(xo,yo,w,h,
   y+=h*vProp1;
   let locationData=new LocationData(xo+0,yo+y,w,h*vProp2,numLocations,locationImages,locationLabels);
   y+=h*vProp2;
+
+  sparrows.activateNext(aqData);
+  let triggerIntervalMinutes=0.5;
+  let triggerTime=setInterval(triggerUpdate,triggerIntervalMinutes*60*1000);
+
+  function triggerUpdate(){
+    console.log("trigger");
+    sparrows.activateNext(aqData);
+  }
 
   this.click=function(){
     sparrows.activateNext(aqData);

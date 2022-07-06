@@ -397,8 +397,8 @@ function Soot(x,y,r,s,n){
 }
 
 function Mote(x,y,r,s){
-  var energy=1.0;
-  var ttlMax=120;
+  var energy=1.5;
+  var ttlMax=60;
   var ttl=ttlMax;
   var a=random(-1.5,0.5)*PI;
   var vel=p5.Vector.fromAngle(a).mult(energy);
